@@ -16,7 +16,7 @@ module.exports.create = function(req, res, next) {
     });
     newPost.save(function(err) {
       if (err) console.log(err);
-      res.send('OK');
+      res.status(200).send('Post posted succesfully');
     })
   }
 };
