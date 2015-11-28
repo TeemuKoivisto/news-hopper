@@ -73,15 +73,7 @@ class RssReader {
 					}
 					newPosts.push(post);
 					
-					var newPost = new Post({
-						title: item.title[0],
-						url: item.link[0]
-					});
-					// tähän ehkä mieluummin lisämetodi, jolla etsitään ensin tietokannasta
-					// löytyykö jo kyseistä postia. tupla varmistus. 
-					newPost.save(function(err) {
-						if (err) console.log(err);
-					})
+                    Post.saveIfUnique(post);
 				}
 				context.updateFeedPosts(index, newPosts)
 			});

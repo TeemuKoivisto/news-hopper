@@ -1,8 +1,12 @@
 var Post = require('./post');
 
-Post.remove().then(function(err) {
-	var post = new Post({ title: 'titteli', url: 'www.testiosoite.testi' })
-		.save(function(err) {
-			console.log(err);
-		})
+Post.remove()
+.then(function() {
+	return new Post({ title: 'titteli', link: 'www.testiosoite.testi' }).save();
+})
+.then(function() {
+    // was success
+})
+.catch(function(err) {
+    console.log('Error in adding test data ', err);
 })

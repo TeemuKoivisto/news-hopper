@@ -8,7 +8,8 @@ module.exports = function(app) {
 	app.get('/posts', Post.findAll);
 
 	app.post('/posts', Post.create);
-	
+	app.post('/posts2', Post.createIfUnique);
+    
 	app.get('/rss', RSSreader.readRSS);
 	
 	app.get('/rssbot', function(req, res) {

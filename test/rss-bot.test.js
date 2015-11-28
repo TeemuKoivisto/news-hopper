@@ -34,12 +34,12 @@ describe('rss bot', function() {
 		try {
 			rssbot.refresh();
 			setTimeout(function() {
-				expect(true).equal(true);
+				expect(true).to.be.true;
 				done();
 			}, 8);
 		}
 		catch(e) {
-			expect(true).equal(false);
+			expect(true).to.be.false;
 			done();
 		}	
 	});
@@ -49,7 +49,7 @@ describe('rss bot', function() {
 			rssbot.refresh();
 			setTimeout(function() {
 				expect(postmodelmock.posts.length).equal(30);
-				expect(postmodelmock.posts[0].url).equal('http://www.iltasanomat.fi/asuminen/art-1447734582052.html?ref=rss');
+				expect(postmodelmock.posts[0].link).equal('http://www.iltasanomat.fi/asuminen/art-1447734582052.html?ref=rss');
 				done();
 			}, 8);
 		})
@@ -60,12 +60,12 @@ describe('rss bot', function() {
 			try{
 				rssbot.refresh();
 				setTimeout(function() {
-					expect(true).equal(true);
+					expect(true).to.be.true;
 					done();
 				}, 8);
 			}
 			catch(e) {
-				expect(true).equal(false);
+				expect(true).to.be.false;
 				done();
 			}
 		})
