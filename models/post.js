@@ -3,7 +3,8 @@ mongoose.Promise = Promise;
 
 var PostSchema = mongoose.Schema({
     title: {type: String, required: true},
-    link: {type: String, required: true}
+    link: {type: String, required: true},
+    feed: {type: String, required: true}
 });
 
 var Post = mongoose.model('Post', PostSchema);
@@ -14,7 +15,7 @@ module.exports.saveIfUnique = function(post) {
     .then(function(found) {
         if (found===null) {
             // var newPost = new Post({ title: post.title, link: post.link });
-            return new Post({ title: post.title, link: post.link }).save();
+            return new Post({ title: post.title, link: post.link, feed: post.feed }).save();
         } else {
             console.log('Post already exists in database');
             return;

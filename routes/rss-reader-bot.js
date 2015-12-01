@@ -33,7 +33,7 @@ class RssReader {
 	
 	start() {
 		// milliseconds 30 mins = 10800000 ms
-		var interval = 5000;
+		var interval = 60000;
 		this.refresh();
 		setInterval(this.refresh.bind(this), interval);
 	}
@@ -67,9 +67,12 @@ class RssReader {
 				
 				for(var i = 0; i < amount; i++) {
 					var item = result.rss.channel[0].item[i];
+                    // var categories get categories
+                    
 					var post = {
 						title: item.title[0],
-						link: item.link[0]
+						link: item.link[0],
+                        feed: feed.name
 					}
 					newPosts.push(post);
 					

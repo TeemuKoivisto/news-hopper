@@ -3,6 +3,8 @@ var RSSreader = require('./rss-reader');
 var RSSbot = require('./rss-reader-bot');
 
 var bot = null;
+bot = new RSSbot();
+bot.start();
 
 module.exports = function(app) {
 	app.get('/posts', Post.findAll);
@@ -12,6 +14,8 @@ module.exports = function(app) {
     
 	app.get('/rss', RSSreader.readRSS);
 	
+    // app.get('/latest', RSSreader.readRSS);
+    
 	app.get('/rssbot', function(req, res) {
 		if (!bot) {
 			bot = new RSSbot();
